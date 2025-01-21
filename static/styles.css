@@ -20,10 +20,9 @@ header {
 }
 
 /* Container holding the left pane, content and footer */
-.page-container {
-    display: flex;
-    flex-direction: column; /* Vertical stacking of children */
-    min-height: 100vh; /* Full height of the viewport */
+.container {
+    display: flex;;    
+    min-height: 100vh; /* Full height of the viewport */    
 }
 
 /* Left Pane */
@@ -80,13 +79,20 @@ footer {
 }
 
 /* Response Section */
-.response {
-    flex: 1 1 60%; /* flex-grow: 1, flex-shrink: 1, flex-basis: 60% */
+.response {    
     background-color: #262626;
-    padding: 20px;
-    padding-bottom: calc(var(--footer-height) + 20px);
+    padding: 20px;    
+    position: inline; /* Ensures absolute positioning */
+    display: inline-block;
+    
+    width:95%;
+    height: 95%;
+    z-index: 997; /* Ensures it appears on top */
     border-radius: 8px;
-    #max-width: 800px; /* Prevents it from growing too large */
+    min-height: 100vh;
+    min-width: 400px;
+    margin-bottom: 0px;
+    
 }
 
 .response h2 {
