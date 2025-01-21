@@ -2,6 +2,8 @@
 
 A Flask web application that provides a user interface for working with Llama language models. This application allows users to select different models, prompts, and parameters to generate text using the Llama.cpp implementation.
 
+![Demo PNG](./imperence4.png)
+
 ## Features
 
 - Web-based interface for Llama model interaction
