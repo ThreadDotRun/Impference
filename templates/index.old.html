@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Llama Model Interface</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class='version'>            
+            <br>'Espresso' version 0.65 <img src="./static/9faf0267-00bb-449b-838d-e926d5e9e272.webp" alt="Version Logo">
+        </div>
+        <div class="banner">
+            <h1>SDK LLama.cpp Web GUI 2024</h1>            
+        </div>
+    </header>
+
+    <div class="container">
+        <aside class="left-pane">
+            <form action="/" method="post">
+                <label for="model">Choose a Model:</label>
+                <select name="model" id="model">
+                    {% for model in models %}
+                    <option value="{{ model }}">{{ model }}</option>
+                    {% endfor %}
+                </select>
+
+                <label for="prompt-select">Choose a System Role:</label>
+                <select name="prompt" id="prompt">
+                    {% for prompt in prompts %}
+                    <option value="{{ prompt }}">{{ prompt }}</option>
+                    {% endfor %}        
+                </select>
+
+                <label for="ctls">Choose Context Size:</label>
+                <select name="ctls" id="ctls">
+                    {% for ctls in cls_list %}
+                    <option value="{{ ctls }}">{{ ctls }}</option>
+                    {% endfor %}
+                </select>
+
+                <label for="num_token">Choose Return Tokens:</label>
+                <select name="num_token" id="num_token">
+                    {% print(num_tokens)%}
+                    {% for num_token in num_tokens %}
+                    <option value="{{ num_token }}">{{ num_token }}</option>
+                    {% endfor %}
+                </select>
+
+                <label for="temp">Choose Temperature:</label>
+                <select name="temp" id="temp">
+                    {% print(temps)%}
+                    {% for temp in temps %}
+                    <option value="{{ temp }}">{{ temp }}</option>
+                    {% endfor %}
+                </select>
+                
+                <label for="input">Enter your prompt:</label>
+                <textarea name="input" id="input" rows="4" cols="50"></textarea>
+                <input type="submit" value="Run Model">
+            </form>
+        </aside>
+
+        <section class="response">
+            <div class='response_div'>
+                {% if response %}
+                <h2>Model Response:</h2>
+                <p>{{ response }}</p>
+                {% endif %}
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2024 SDK AI. All rights reserved.</p>
+    </footer>
+
+    <script>
+        $(document).ready(function(){
+            $('form').on('submit', function(event){
+                event.preventDefault(); // Prevent form from submitting normally
+                                var formData = {
+                    'model': $('#model').val(),
+                    'prompt': $('#prompt').val(),
+                    'input': $('#input').val(),
+                    'ctls': $('#ctls').val(),  // Include the context size selection
+                    'num_tokens': $('#num_token').val(),
+                    'temps': $('#temp').val()
+                };
+                
+                $.ajax({
+                    url: '/run_model',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(formData),
+                    success: function(response){
+                        // Append new response to the conversation
+                        $('.response').append('<h2>Model Response:</h2><p>' + response.response + '</p>');
+                    },
+                    error: function(error){
+                        $('.response').append('<p>Error!</p>');
+                    }
+                });
+            });
+        });
+    </script>
+
+
+</body>
+</html>

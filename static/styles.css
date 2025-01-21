@@ -1,0 +1,198 @@
+/* General Styles */
+body {
+    background-color: #1a1a1a;
+    color: white;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header */
+header {
+    background-color: #333;
+    color: #ffcc00;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.banner h1 {
+    margin: 0;
+}
+
+/* Container holding the left pane, content and footer */
+.page-container {
+    display: flex;
+    flex-direction: column; /* Vertical stacking of children */
+    min-height: 100vh; /* Full height of the viewport */
+}
+
+/* Left Pane */
+.left-pane {
+    flex: 0 1 30%; /* flex-grow: 0, flex-shrink: 1, flex-basis: 30% */
+    background-color: #262626;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 400px; /* Prevents it from growing too large */
+}
+
+.left-pane label, .left-pane input[type=submit], .left-pane select, .left-pane textarea {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.left-pane label {
+    color: #ffcc00;
+    margin-bottom: 5px;
+}
+
+.left-pane input[type=submit] {
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.left-pane input[type=submit]:hover {
+    background-color: #ff8533;
+}
+
+.left-pane select, .left-pane textarea {
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #333;
+    background-color: #333;
+    color: white;
+}
+/* Footer */
+footer {
+    display: flex; /* Flexbox for content alignment */        
+    height: 50px; /* Fixed height for the footer */
+    width: ;
+    background-color: #333; /* Background color */
+    color: white; /* Text color */
+    position: absolute; /* Ensures absolute positioning */
+    left: 10px; /* Positioning from the left edge */
+    bottom: 10px; /* Positioning from the bottom edge */
+    z-index: 998; /* Ensures it appears on top */
+}
+
+/* Response Section */
+.response {
+    flex: 1 1 60%; /* flex-grow: 1, flex-shrink: 1, flex-basis: 60% */
+    background-color: #262626;
+    padding: 20px;
+    padding-bottom: calc(var(--footer-height) + 20px);
+    border-radius: 8px;
+    #max-width: 800px; /* Prevents it from growing too large */
+}
+
+.response h2 {
+    color: #ffcc00;
+}
+
+
+
+
+/* Version Text (positioned at bottom-left) */
+.version {
+    font-family: 'Consolas', 'Monaco', 'Lucida Console', monospace;
+    font-size: 12px;
+    position: absolute; /* Ensures absolute positioning */
+    left: 250px; /* Positioning from the left edge */
+    bottom: 10px; /* Positioning from the bottom edge */
+    z-index: 999; /* Ensures it appears on top */
+}
+
+.version img {
+    width: 95px; /* Initial size */
+    height: 85px; /* Initial size */
+    transition: all 0.3s ease; /* Smooth transition for hover */
+}
+
+.version:hover img {
+    width: 300px; /* Expands width on hover */
+    height: 280px; /* Expands height on hover */
+}
+
+
+/* Ensure textarea doesn't overflow */
+textarea#input {
+    font-family: 'Consolas', 'Monaco', 'Lucida Console', monospace;
+    background-color: #1E1E1E;
+    color: #D4D4D4;
+    border: none;
+    padding: 10px;
+    box-sizing: border-box;
+    line-height: 1.5;
+    resize: none;
+    width: 100%;
+}
+
+/* Optional: Styles for the scrollbar to match the dark theme */
+textarea#input::-webkit-scrollbar {
+    width: 12px;
+}
+
+textarea#input::-webkit-scrollbar-track {
+    background: #2E2E2E;
+}
+
+textarea#input::-webkit-scrollbar-thumb {
+    background-color: #444;
+    border-radius: 10px;
+    border: 3px solid #2E2E2E;
+}
+
+.hide-small-images {
+  display: none; 
+  visibility: hidden; 
+}
+
+.hide-small-images::before {  
+  visibility: visible;  
+  display: flex;
+}
+
+@media (min-width: 1000px) and (min-height: 800px) {
+  .hide-small-images {
+    visibility: visible;
+    display: flex;
+  }
+  
+  .hide-small-images::before {
+    display: none;
+    visibility: hidden; 
+  }
+}
+
+.hide-small-elements {
+  display: none; /* Hide the element */
+  visibility: hidden; /* Ensure it's not visible */
+}
+
+.hide-small-elements::before {  
+  content: ''; /* Add content for pseudo-element */
+  display: flex; /* Ensure the pseudo-element appears inline */
+  visibility: visible; /* Make the pseudo-element visible */
+  width: 95px; /* Initial size */
+  height: 85px;
+}
+
+@media (min-width: 1000px) and (min-height: 800px) {
+  .hide-small-elements {
+    display: flex; /* Restore visibility for inline elements like <br> */
+    visibility: visible; /* Make the element visible */
+    width: 95px; /* Initial size */
+    height: 85px;
+  }
+
+  .hide-small-elements::before {
+    display: none; /* Remove the pseudo-element */
+    visibility: hidden; /* Hide the pseudo-element */
+  }
+}
+
+
