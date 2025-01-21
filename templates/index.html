@@ -16,7 +16,7 @@
     </header>
 
     <div class="container">
-        <aside class="left-pane">
+        <div class="left-pane">
             <form action="/" method="post">
                 <label for="model">Choose an Imp:</label>
                 <select name="model" id="model">
@@ -58,17 +58,14 @@
                 <label for="input">Enter your prompt:</label>
                 <textarea name="input" id="input" rows="4" cols="50"></textarea>
                 <input type="submit" value="Run Model">
-            </form>
-        </aside>
-
-        <section class="response">
-            <div class='response_div'>
-                {% if response %}
+            </form>             
+        </div>
+        <div class="response">
+             {% if response %}
                 <h2>Model Response:</h2>
                 <p>{{ response }}</p>
                 {% endif %}
             </div>
-        </section>
     </div>
 
     <footer class="hide-small-images"  class="footer">
