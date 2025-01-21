@@ -80,7 +80,7 @@ Store prompt templates as `.txt` files in the `prompts` directory.
 
 1. Start the Flask server:
 ```bash
-python app.py
+python Web_Server.py
 ```
 
 2. Access the web interface at `http://localhost:5001`
