@@ -134,7 +134,7 @@ The application includes basic error handling for:
 
 ## License
 
-[Your chosen license]
+[Apache 2.0]
 
 ## Acknowledgments
 
