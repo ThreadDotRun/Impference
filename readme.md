@@ -1,6 +1,6 @@
 # Llama Flask Interface
 
-A Flask web application that provides a user interface for interacting with Llama language models. This application allows users to select different models, prompts, and parameters to generate text using the Llama.cpp implementation.
+A Flask web application that provides a user interface for working with Llama language models. This application allows users to select different models, prompts, and parameters to generate text using the Llama.cpp implementation.
 
 ## Features
 
